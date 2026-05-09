@@ -1,0 +1,184 @@
+<!-- Save this file as index.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game Score Tracker</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #141e30, #243b55);
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+
+            width: 500px;
+            margin: 80px auto;
+            background-color: rgba(255,255,255,0.08);
+
+            padding: 40px;
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow: 0px 0px 20px black;
+        }
+
+        h1 {
+            color: white;
+            font-size: 40px;
+        }
+
+        .player-name {
+
+            color: cyan;
+            font-size: 28px;
+            margin-top: 30px;
+        }
+
+        .score {
+
+            color: #00ff99;
+            font-size: 30px;
+            margin-top: 25px;
+        }
+
+        .high-score {
+
+            color: yellow;
+            font-size: 30px;
+            margin-top: 25px;
+        }
+
+        button {
+
+            width: 140px;
+            height: 50px;
+
+            margin: 15px;
+
+            border: none;
+            border-radius: 10px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            color: white;
+
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background-color: green;
+        }
+
+        .minus-btn {
+            background-color: crimson;
+        }
+
+        .reset-btn {
+            background-color: royalblue;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>GAME SCORE TRACKER</h1>
+
+        <div class="player-name" id="playerName">
+            PLAYER NAME : Player 1
+        </div>
+
+        <div class="score" id="currentScore">
+            CURRENT SCORE : 0
+        </div>
+
+        <div class="high-score" id="highScore">
+            HIGHEST SCORE : 0
+        </div>
+
+        <br><br>
+
+        <button class="add-btn" onclick="addScore()">
+            ADD SCORE
+        </button>
+
+        <button class="minus-btn" onclick="minusScore()">
+            MINUS
+        </button>
+
+        <button class="reset-btn" onclick="resetScore()">
+            RESET
+        </button>
+
+    </div>
+
+    <script>
+
+        let currentScore = 0;
+        let highScore = 0;
+
+        let player = prompt("Enter Player Name");
+
+        document.getElementById("playerName").innerHTML =
+            "PLAYER NAME : " + player;
+
+        // Add Score
+        function addScore() {
+
+            currentScore += 10;
+
+            if (currentScore > highScore) {
+                highScore = currentScore;
+            }
+
+            updateDisplay();
+        }
+
+        // Minus Score
+        function minusScore() {
+
+            currentScore -= 5;
+
+            if (currentScore < 0) {
+                currentScore = 0;
+            }
+
+            updateDisplay();
+        }
+
+        // Reset Score
+        function resetScore() {
+
+            currentScore = 0;
+
+            updateDisplay();
+        }
+
+        // Update Display
+        function updateDisplay() {
+
+            document.getElementById("currentScore").innerHTML =
+                "CURRENT SCORE : " + currentScore;
+
+            document.getElementById("highScore").innerHTML =
+                "HIGHEST SCORE : " + highScore;
+        }
+
+    </script>
+
+</body>
+</html>
